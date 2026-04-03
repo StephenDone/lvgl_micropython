@@ -28,16 +28,16 @@ _RAMWR = const(0x2C)
 _MADCTL = const(0x32)
 
 _WRITE_CMD = const(0x02)
-_WRITE_COLOR = const(0x3C)
+_WRITE_COLOR = const(0x32)
 
 
 class ST77916(display_driver_framework.DisplayDriver):
 
     _ORIENTATION_TABLE = (
         0,
-        _MADCTL_MV,
+        _MADCTL_MV | _MADCTL_MY,
         _MADCTL_MX | _MADCTL_MY,
-        _MADCTL_MV | _MADCTL_MX | _MADCTL_MY
+        _MADCTL_MV | _MADCTL_MX
     )
 
     @staticmethod
