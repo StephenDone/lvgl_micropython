@@ -298,7 +298,7 @@ class DisplayDriver:
             self._param_buf[0] = (self._madctl(
                 self._color_byte_order, self._ORIENTATION_TABLE, ~rotation
             ))
-            self._data_bus.tx_param(_MADCTL, self._param_mv[:1])
+            self.set_params(_MADCTL, self._param_mv[:1])
 
     @staticmethod
     def get_displays():
