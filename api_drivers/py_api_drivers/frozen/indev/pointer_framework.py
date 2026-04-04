@@ -47,10 +47,12 @@ class PointerDriver(_indev_base.IndevBase):
         if last_state == self.PRESSED:
             lv.refr_now(self._disp_drv)
 
-    def calibrate(self):
-        import touch_calibrate
+    def calibrate(self, calibrate_fn=None):
+        if calibrate_fn is None:
+            import touch_calibrate
+            calibrate_fn = touch_calibrate.calibrate
 
-        if touch_calibrate.calibrate(self, self._cal):  # NOQA
+        if calibrate_fn(self, self._cal):  # NOQA
             self._cal.save()
             return True
 
